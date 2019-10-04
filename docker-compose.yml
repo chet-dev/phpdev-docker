@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # php & html files should be kept in our local /code folder or
+      # /c/Users/<user>/<project_dir> e.g. 
+      # - /c/Users/someone/Projects:/var/www/html/
+      - ./code:/var/www/html/
+  mysql:
+    build:
+      context: ./
+      dockerfile: mysql.dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      # Remember to connect to container name (our case is mysql) instead of ip address or hostname
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD : 'yes'
+    restart: always
+    volumes:
+      # Keep the database data in our local drive
+      - ./_var_lib_mysql:/var/lib/mysql
