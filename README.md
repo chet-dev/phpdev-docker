@@ -8,4 +8,8 @@
 
 3. Execute the command:
 
-` docker-compose up `
+`
+
+ docker-compose up  
+ 
+`
