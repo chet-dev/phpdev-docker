@@ -11,7 +11,8 @@ services:
       # php & html files should be kept in our local /code folder or
       # /c/Users/<user>/<project_dir> e.g. 
       # - /c/Users/someone/Projects:/var/www/html/
-      - ./code:/var/www/html/
+      # - ./code:/var/www/html/
+      - /c/Users/someone/Projects/ci_dev:/var/www/html/
   mysql:
     build:
       context: ./
