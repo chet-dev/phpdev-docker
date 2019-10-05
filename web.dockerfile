@@ -21,5 +21,9 @@ COPY ./php.ini /etc/php/7.2/apache2/php.ini
 
 CMD ["apachectl","-D","FOREGROUND"]
 RUN a2enmod rewrite
+
+# To remove index.php in the url for CodeIgniter we have to AllowOverride All instead og None
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
 EXPOSE 80
 EXPOSE 443
